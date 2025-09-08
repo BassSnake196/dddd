@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css?family=Audiowide");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 🔹 corregido */
+  font-family: "Audiowide", sans-serif;
+  color: aqua;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #2f363e;
+}
+
+.box {
+  position: relative;
+  width: 450px;
+  height: 550px;
+  border-radius: 30px;
+  background-color: #2f363e;
+  padding: 30px 50px;
+  box-shadow: 25px 25px 75px rgba(0,0,0,0.25),
+              10px 10px 70px rgba(0,0,0,0.25);
+}
+
+h2 {
+  width: 100%;
+  font-weight: 600;
+  text-align: center;
+  color: aqua;
+  font-size: 1.75em;
+  margin-bottom: 20px;
+}
+
+/* Agrupa input y botón en fila */
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* espacio entre input y botón */
+}
+
+#inputBox {
+  flex: 1; /* ocupa todo el espacio disponible */
+  color: black;
+  border: none;
+  outline: none;
+  padding: 15px 12px;
+  border-radius: 30px;
+  font-size: 1em;
+  box-shadow: 5px 5px 7px rgba(0,0,0,0.25);
+}
+
+/* Botón circular con "+" centrado */
+.boton {
+  width: 45px;
+  height: 45px;
+  background-color: #03800b;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  transition: 0.3s ease-in-out;
+}
+.boton:active {
+  transform: scale(0.9);
+}
+.boton:hover {
+  opacity: 0.7;
+}
+
+.box li {
+  position: relative;
+  display: flex;
+  margin-top: 15px;
+  background: #1f83f2;
+  border: none;
+  outline: none;
+  padding: 10px 15px 12px;
+  border-radius: 30px;
+  font-size: 1em;
+}
+
+/* Mensaje de error */
+.error-msg {
+  display: none; /* Oculto por defecto */
+  color: red;
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Input en estado de error */
+.input-error {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+}
+
+/* Contenedor de la lista con scroll interno */
+#list {
+  max-height: 400px;
+  margin-top: 5px;
+  overflow-y: auto;
+}
+
+/* Chrome, Edge, Safari */
+#list::-webkit-scrollbar {
+  width: 10px; /* ancho de la barra */
+}
+
+#list::-webkit-scrollbar-track {
+  background: #2f363e; /* fondo del track */
+  border-radius: 4px;
+}
+
+#list::-webkit-scrollbar-thumb {
+  background-color: #68a7a7; /* color de la barra */
+  border-radius: 4px;
+  border: 2px solid #2f363e; /* margen entre barra y track */
+}
+
+/* Cada tarea */
+.task-item {
+  display: flex;
+  justify-content: space-between; /* texto a la izq, botón a la der */
+  align-items: center;
+  background: #ff0000;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+/* Texto de la tarea */
+.task-text {
+  flex: 1;
+  margin-right: 10px;
+  word-break: break-word; /* si es muy largo, baja de línea */
+  color: #fff;;
+}
+
+/* Botón de eliminar fijo a la derecha */
+.delete-btn {
+  flex-shrink: 0;
+  background: crimson;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.delete-btn:active {
+  transform: scale(0.9);
+}
+.delete-btn:hover {
+  color: #000;
+  background-color: rgb(148, 13, 40);
+}
+
+/* Botón toggle a la izquierda */
+.toggle-btn {
+  width: 25px;
+  height: 25px;
+  border: 2px solid #03800b;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 10px;
+  flex-shrink: 0;
+  transition: 0.3s;
+}
+
+/* ESTADO COMPLETADO */
+
+.task-item.completed-task {
+  background-color: #80f6ff; /* cambia el fondo de toda la tarea */
+}
+
+.task-item.completed-task .task-text {
+  text-decoration: line-through red;
+  text-decoration-thickness: 3px; /* línea más gruesa */
+  color: black;
+}
+
+
+.task-item.completed-task .toggle-btn {
+  background-color: #03800b;  /* relleno verde */
+  border-color: #03800b;      /* borde verde */
+}
+
+.task-item.completed-task .toggle-btn::after {
+  content: "✓";               /* marca de check */
+  color: rgb(255, 255, 255);
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
